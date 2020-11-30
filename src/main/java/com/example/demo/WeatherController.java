@@ -23,4 +23,10 @@ public class WeatherController {
     Weather getWeatherForCity(@RequestParam("name") String cityName) {
         return weatherRepository.findById(cityName).get();
     }
+
+    @GetMapping("/hello")
+    public @ResponseBody
+    String hello() {
+        return "hello";
+    }
 }
