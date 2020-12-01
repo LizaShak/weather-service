@@ -21,7 +21,6 @@ jobs:
         run: az extension add -y --name spring-cloud
       - name: Deploy to Azure Spring Cloud
         run: az spring-cloud app deploy --resource-group ${{ secrets.ASC_RG }} --service ${{ secrets.ASC_NAME }} --name ${{ secrets.APP_NAME }} --jar-path target/demo-0.0.1-SNAPSHOT.jar
-        continue-on-error: true
       - name: Print logs on error
         if: ${{ failure() }}
         run: az spring-cloud app logs --resource-group ${{ secrets.ASC_RG }} --service ${{ secrets.ASC_NAME }} --name ${{ secrets.APP_NAME }}
