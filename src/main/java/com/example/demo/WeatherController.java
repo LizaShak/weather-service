@@ -12,16 +12,14 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping(path = "/weather")
 public class WeatherController {
 
-    private final WeatherRepository weatherRepository;
-
-    public WeatherController(WeatherRepository weatherRepository) {
-        this.weatherRepository = weatherRepository;
-    }
-
     @GetMapping("/city")
     public @ResponseBody
     Weather getWeatherForCity(@RequestParam("name") String cityName) {
-        return weatherRepository.findById(cityName).get();
+        Weather res = new Weather();
+        res.setCity(cityName);
+        res.setDescription("partly cloudy");
+        res.setIcon("weather-pouring");
+        return res;
     }
 
     @GetMapping("/hello")
